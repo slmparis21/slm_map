@@ -1,2 +1,2 @@
 # slm_map
-interactive map
+ interactive map
