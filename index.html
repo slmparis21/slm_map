@@ -50,8 +50,10 @@ body {
 	
 	mapboxgl.accessToken = 'pk.eyJ1IjoienNvbmcwMDAiLCJhIjoiY2tuOGZpam1hMHhqeDJ1cW5ybnk2YWY5aSJ9.Qvp2VueePF0Ss_IPcmtdNA';
   
-  const data= fetch("map.geojson");
- console.log(data);
+  const data= fetch("map.geojson").then(data => {
+      console.log(data);
+    });
+  const geojson = data;
     
   
   
