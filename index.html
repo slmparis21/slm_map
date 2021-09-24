@@ -61,8 +61,8 @@ async function loadData() {
   const geodata = await response.json();
   console.log(geodata); 
 }
-loadData();
- 
+const geojson=loadData();
+ console.log(geojson);
 const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/zsong000/cktqgt8h803ac17s4nlxt23fr',
