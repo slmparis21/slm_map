@@ -698,6 +698,15 @@ body {
       }
    ]
 }
+
+const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/zsong000/cktqgt8h803ac17s4nlxt23fr',
+        center: [4.804297,
+          43.9497271],
+        zoom: 2
+    });
+
     // Add markers to the map.
 for (const marker of geojson.features) {
   // Create a DOM element for each marker.
