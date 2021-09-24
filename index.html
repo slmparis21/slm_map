@@ -56,13 +56,17 @@ body {
   // const geojson = data;
     
   
-async function loadData() {
-  const response = await fetch('map.geojson');
-  const geodata = await response.json();
-  console.log(geodata); 
-}
-const geojson=loadData();
- console.log(geojson);
+// async function loadData() {
+//   const response = await fetch('map.geojson');
+//   const geodata = await response.json();
+//   console.log(geodata); 
+// }
+// const geojson=loadData();
+//  console.log(geojson);
+
+
+
+
 const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/zsong000/cktqgt8h803ac17s4nlxt23fr',
@@ -70,7 +74,11 @@ const map = new mapboxgl.Map({
           43.9497271],
         zoom: 2
     });
-
+map.addSource('geoJsonData', {
+type: 'geojson',
+// Use a URL for the value for the `data` property.
+data: 'map.geojson'
+});
     // Add markers to the map.
 for (const marker of geojson.features) {
   // Create a DOM element for each marker.
