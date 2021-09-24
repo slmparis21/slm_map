@@ -60,7 +60,6 @@ async function loadData() {
   const response = await fetch('map.geojson');
   const geodata = await response.json();
   console.log(geodata); 
-  // logs [{ name: 'Joker'}, { name: 'Batman' }]
 }
 loadData();
  
