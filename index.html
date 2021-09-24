@@ -50,13 +50,19 @@ body {
 	
 	mapboxgl.accessToken = 'pk.eyJ1IjoienNvbmcwMDAiLCJhIjoiY2tuOGZpam1hMHhqeDJ1cW5ybnk2YWY5aSJ9.Qvp2VueePF0Ss_IPcmtdNA';
   
-  const data= fetch("map.geojson").then(data => {
-      console.log(data);
-    });
-  const geojson = data;
+  // const data= fetch("map.geojson").then(data => {
+  //     console.log(data);
+  //   });
+  // const geojson = data;
     
   
-  
+async function loadData() {
+  const response = await fetch('map.geojson');
+  const geodata = await response.json();
+  console.log(geodata); 
+  // logs [{ name: 'Joker'}, { name: 'Batman' }]
+}
+loadNames();
  
 const map = new mapboxgl.Map({
         container: 'map',
