@@ -6,46 +6,19 @@
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
-<style>
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-</style>
+<!-- <style>
+/* #map { position: absolute; top: 0; bottom: 0; width: 100%; } */
+</style> -->
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<style>
-body {
-  margin: 0;
-  padding: 0;
-}
-
-#map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-.marker {
-  display: block;
-  border: none;
-  box-sizing:90%;
-  cursor: pointer;
-  padding: 0;
-}
-
-.mapboxgl-popup {
-  max-width: 200px;
-}
-
-.mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-}
-
-</style>
- 
-<div id="map"></div>
- 
+<div id="contents">
+<li id="cats">
+  <!-- <p>${countries[0]}</p> -->
+</li>
+<li id="map"></div>
+</li>
+<!-- <script href="geojson.js"></script> -->
 <script>
 	
 mapboxgl.accessToken = 'pk.eyJ1IjoienNvbmcwMDAiLCJhIjoiY2tuOGZpam1hMHhqeDJ1cW5ybnk2YWY5aSJ9.Qvp2VueePF0Ss_IPcmtdNA';
@@ -56,7 +29,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Aromateka",
-        "address": "Znamenka Ulitsa, 7/3, Пушкино, Moskovskaya oblast, Russia, 119019"
+        "address": "Znamenka Ulitsa, 7/3, Пушкино, Moskovskaya oblast, Russia, 119019",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -70,7 +45,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Parfümerie Aurel",
-        "address": "Breite Str. 75, Stendal"
+        "address": "Breite Str. 75, Stendal",
+        "country":"Germany",
+        "code":49
       },
       "geometry": {
         "type": "Point",
@@ -84,7 +61,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Aus Liebe Zum Duft",
-        "address": "Zeiloch 9, Bruchsal"
+        "address": "Zeiloch 9, Bruchsal",
+        "country":"Germany",
+        "code":49
       },
       "geometry": {
         "type": "Point",
@@ -98,7 +77,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Balduin",
-        "address": "Adlerstraße 15 86899 Landsberg am Lech, Germany"
+        "address": "Adlerstraße 15 86899 Landsberg am Lech, Germany",
+        "country":"Germany",
+        "code":49
       },
       "geometry": {
         "type": "Point",
@@ -112,7 +93,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Basic Crème de la Crème",
-        "address": "21 Rue des Élus, 51100 Reims -"
+        "address": "21 Rue des Élus, 51100 Reims -",
+        "country":"France",
+        "code":33
       },
       "geometry": {
         "type": "Point",
@@ -126,7 +109,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Bercalina",
-        "address": "2 rue Neuve Saint Roch, Bastia"
+        "address": "2 rue Neuve Saint Roch, Bastia",
+        "country":"France",
+        "code":33
       },
       "geometry": {
         "type": "Point",
@@ -140,7 +125,10 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Cour des Hommes",
-        "address": "11 Rue des Clercs, 57000 Metz, France"
+        "address": "11 Rue des Clercs, 57000 Metz, France",
+        "country":"France",
+        "code":33
+      
       },
       "geometry": {
         "type": "Point",
@@ -154,7 +142,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Eiffel",
-        "address": "Ulitsa Kuybysheva, 26, Vladikavkaz, Северная Осетия-Алания республика"
+        "address": "Ulitsa Kuybysheva, 26, Vladikavkaz, Северная Осетия-Алания республика",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -168,7 +158,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Fablab",
-        "address": "Bondegatan 7, Stockholm"
+        "address": "Bondegatan 7, Stockholm",
+        "country":"Sweden",
+        "code":46
       },
       "geometry": {
         "type": "Point",
@@ -182,7 +174,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Giorgio",
-        "address": "18-1 A Uchitel skaya st.,St. Petersburg"
+        "address": "18-1 A Uchitel skaya st.,St. Petersburg",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -196,7 +190,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Harvey Nichols",
-        "address": "109-125 Knightsbridge, Belgravia, London SW1X 7RJ, UK"
+        "address": "109-125 Knightsbridge, Belgravia, London SW1X 7RJ, UK",
+        "country":"United Kingdom",
+        "code":44
       },
       "geometry": {
         "type": "Point",
@@ -210,7 +206,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Hyrv Concept Store",
-        "address": "Rotermanni 7, Tallinn"
+        "address": "Rotermanni 7, Tallinn",
+        "country":"Estonia",
+        "code":372
       },
       "geometry": {
         "type": "Point",
@@ -224,7 +222,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Identité Parfumerie",
-        "address": "3 rue des Bons Enfants, Muhlouse"
+        "address": "3 rue des Bons Enfants, Muhlouse",
+        "country":"France",
+        "code":33
       },
       "geometry": {
         "type": "Point",
@@ -238,7 +238,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Impressium",
-        "address": "Mysia 3 00-496 Varsovie"
+        "address": "Mysia 3 00-496 Varsovie",
+        "country":"Poland",
+        "code":48
       },
       "geometry": {
         "type": "Point",
@@ -252,7 +254,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Impressium",
-        "address": "Piotrkowska 243 90-456 Łódź"
+        "address": "Piotrkowska 243 90-456 Łódź",
+        "country":"Poland",
+        "code":48
       },
       "geometry": {
         "type": "Point",
@@ -266,7 +270,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Indigo Perfumery",
-        "address": "12011 Detroit Ave, Lakewood, OH 44107"
+        "address": "12011 Detroit Ave, Lakewood, OH 44107",
+        "country":"United States",
+        "code":1
       },
       "geometry": {
         "type": "Point",
@@ -280,7 +286,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Kurfürsten Parfümerie",
-        "address": "P7 24, Mannheim"
+        "address": "P7 24, Mannheim",
+        "country":"Germany",
+        "code":49
       },
       "geometry": {
         "type": "Point",
@@ -294,7 +302,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "La Majestueuse",
-        "address": "73 rue des Remparts, Bordeaux"
+        "address": "73 rue des Remparts, Bordeaux",
+        "country":"France",
+        "code":33
       },
       "geometry": {
         "type": "Point",
@@ -308,7 +318,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Le Paravent",
-        "address": "35 rue Auguste Comte, Lyon"
+        "address": "35 rue Auguste Comte, Lyon",
+        "country":"France",
+        "code":33
       },
       "geometry": {
         "type": "Point",
@@ -322,7 +334,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Le Secret du Marais",
-        "address": "Calle Hortaleza, 75 28004 Madrid"
+        "address": "Calle Hortaleza, 75 28004 Madrid",
+        "country":"Spain",
+        "code":34
       },
       "geometry": {
         "type": "Point",
@@ -336,7 +350,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Lukse",
-        "address": "Serebrennikovskaya Ulitsa, 31, Novosibirsk"
+        "address": "Serebrennikovskaya Ulitsa, 31, Novosibirsk",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -350,7 +366,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Omar",
-        "address": "Muscat Oman"
+        "address": "Muscat Oman",
+        "country":"Middle East",
+        "code":968
       },
       "geometry": {
         "type": "Point",
@@ -364,7 +382,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Parfumerie Brückner",
-        "address": "Kaufingerstraße 28"
+        "address": "Kaufingerstraße 28",
+        "country":"Germany",
+        "code":49
       },
       "geometry": {
         "type": "Point",
@@ -378,7 +398,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Parfumerie Christophe",
-        "address": "Groenlaan 9, Herzele\n"
+        "address": "Groenlaan 9, Herzele\n",
+        "country":"Belgium",
+        "code":32
       },
       "geometry": {
         "type": "Point",
@@ -392,7 +414,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Parfums Uniques",
-        "address": "Klenzestrasse 22 (at Gärtnerplatz) , 80469 Munich"
+        "address": "Klenzestrasse 22 (at Gärtnerplatz) , 80469 Munich",
+        "country":"Germany",
+        "code":32
       },
       "geometry": {
         "type": "Point",
@@ -406,7 +430,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Rosamundi",
-        "address": "Agora Floreasca building, etaj 1 Calea Floreasca 111–113, Bucharest"
+        "address": "Agora Floreasca building, etaj 1 Calea Floreasca 111–113, Bucharest",
+        "country":"Romania",
+        "code":40
       },
       "geometry": {
         "type": "Point",
@@ -420,7 +446,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Sens Unique",
-        "address": "13 Rue du Roi de Sicile, 75004 Paris -"
+        "address": "13 Rue du Roi de Sicile, 75004 Paris -",
+        "country":"France",
+        "code":33
       },
       "geometry": {
         "type": "Point",
@@ -434,7 +462,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Smell Stories",
-        "address": "Verversstraat 15, Quartier Saint-Jacques, Bruxelles"
+        "address": "Verversstraat 15, Quartier Saint-Jacques, Bruxelles",
+        "country":"France",
+        "code":33
       },
       "geometry": {
         "type": "Point",
@@ -448,7 +478,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Space240",
-        "address": "240 East 29th st, New York"
+        "address": "240 East 29th st, New York",
+        "country":"United States",
+        "code":1
       },
       "geometry": {
         "type": "Point",
@@ -462,7 +494,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Spitzenhaus",
-        "address": "Börsenstrasse 14, 8001 Zürich"
+        "address": "Börsenstrasse 14, 8001 Zürich",
+        "country":"Switerland",
+        "code":41
       },
       "geometry": {
         "type": "Point",
@@ -476,7 +510,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Swan Parfümerie",
-        "address": "Stadtpl. 29, 84307 Eggenfelden, Allemagne"
+        "address": "Stadtpl. 29, 84307 Eggenfelden, Allemagne",
+        "country":"Germany",
+        "code":49
       },
       "geometry": {
         "type": "Point",
@@ -490,7 +526,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Zgo",
-        "address": "600 Castro street, San Francisco"
+        "address": "600 Castro street, San Francisco",
+        "country":"United States",
+        "code":1
       },
       "geometry": {
         "type": "Point",
@@ -504,7 +542,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "La Maison de la Parfumeria",
-        "address": "TC Plaza, Karla Marksa 76a, Khabarovsk"
+        "address": "TC Plaza, Karla Marksa 76a, Khabarovsk",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -518,7 +558,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Renee Parfums",
-        "address": "BASKOV LANE, 5, Saint Petersburg"
+        "address": "BASKOV LANE, 5, Saint Petersburg",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -532,7 +574,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Imagine",
-        "address": "Prospekt Lenina 25, mall Europa, Yekaterinburg 620014"
+        "address": "Prospekt Lenina 25, mall Europa, Yekaterinburg 620014",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -546,7 +590,9 @@ const geojson ={
       "type": "Feature",
       "properties": {
         "name": "Place Shop",
-        "address": "PERM, SOVETSKAYA ST 28A"
+        "address": "PERM, SOVETSKAYA ST 28A",
+        "country":"Russia",
+        "code":7
       },
       "geometry": {
         "type": "Point",
@@ -558,7 +604,25 @@ const geojson ={
     }
   ]
 }
- 
+
+const countries=[
+  "Belgium",
+  "Estonia",
+  "France",
+  "Germany",
+  "Japan",
+  "Middle East",
+  "Poland",
+  "Romania",
+  "Russia",
+  "Spain",
+  "Sweden",
+  "Switerland",
+  "United States",
+  "United Kingdom"
+];
+
+
 
 const map = new mapboxgl.Map({
         container: 'map',
@@ -588,6 +652,71 @@ for (const marker of geojson.features) {
   .addTo(map);
 }
 
+
+
+
+
+let stores=[];
+// let stores=[];
+let storeName=[];
+let countryName = [];
+///////////
+for(let i=0;i<countries.length;i++){
+  let storeInfo={};
+  storeInfo['country']=countries[i];
+  stores.push(storeInfo);
+}
+console.log(stores);
+for(let i =0;i<stores.length;i++){
+  stores[i].name=[];
+  let caseVal=stores[i].country;
+  for(const obj of geojson.features){
+    switch(obj.properties.country){
+        
+        case caseVal:
+        stores[i].name.push(obj.properties.name);
+        break;
+    }
+  }
+
+}
+let id = 0;
+
+countries.forEach(country => {
+
+  
+  let div= document.getElementById('cats');
+  var newName = document.createElement("button");
+  newName.className="accordion";
+
+  newName.innerHTML=`<strong>${country} \u2727</strong>&nbsp`;
+  var newPanel = document.createElement("div");
+  newPanel.className='panel';
+  div.append(newName);
+
+  // console.log(n);
+  let newId = 0;
+  console.log(stores[id].name);
+
+  for(n of stores[id].name){
+    newPanel.innerHTML+=`<a id="storeNames">${stores[id].name[newId]}</a>`;
+  
+    div.append(newPanel);
+    console.log(stores[id].name[newId]);
+
+    newId++;
+  }
+  id++;
+});
+
+// for(const country of countries){
+//   let c=document.getElementById('cats').innerHTML=`<h2>${country}
+//   <br>
+//   <a id="storeNames"><p>Harveynichols<p></a>
+//   </h2>`;
+
+// }
+
 // function displayLocationInfo(position) {
 //   const { coords: { latitude, longitude } } = position;
 
@@ -599,6 +728,24 @@ for (const marker of geojson.features) {
 //   map.setCenter(center);
 // }
 </script>
+<script>
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
  
+}
+
+ </script>
 </body>
 </html>
